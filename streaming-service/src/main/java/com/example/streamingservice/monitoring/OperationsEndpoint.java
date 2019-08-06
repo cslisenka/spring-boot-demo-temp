@@ -41,7 +41,7 @@ public class OperationsEndpoint {
 
     @PostConstruct
     public void init() {
-        registry.gauge("connections_count", emptyList(), "aaaa", aaa -> 1);
+        registry.gauge("connections_count", emptyList(), handler, h -> h.getConnections().size());
         updatesCounter = registry.counter("quote_updates");
     }
 
