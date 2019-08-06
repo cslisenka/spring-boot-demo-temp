@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
+import org.springframework.boot.actuate.endpoint.annotation.Selector;
 import org.springframework.boot.actuate.endpoint.annotation.WriteOperation;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.event.EventListener;
@@ -50,8 +51,9 @@ public class OperationsEndpoint {
         return handler.getConnections().keySet();
     }
 
+    // TODO check why not working
     @WriteOperation
-    public void flushData(String symbol) {
+    public void flushData(@Selector String symbol) {
         log.info("flushing data to clients");
         eventBus.publishEvent(new QuoteReloadEvent(symbol));
     }
