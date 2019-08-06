@@ -1,3 +1,9 @@
+streaming: http://localhost:8080/websocket
+quote: http://localhost:8081/quote?symbol=AAPL
+spring boot admin: http://localhost:8082
+prometheus: http://localhost:9090
+grafana: http://localhost:3000
+
 1. Prometheus
 1.1 Allow docker to access host IP address
 iptables -A INPUT -i docker0 -j ACCEPT
@@ -19,3 +25,9 @@ admin/admin
 3.3 Set Prometheus datasource
 
 3.4 Import dashboard
+
+TODO
+1. Bash scripts to deploy and start spring-boot applications + tune JVM parameters
+2. spring security
+3. https
+4. configure tomcat/netty logs
